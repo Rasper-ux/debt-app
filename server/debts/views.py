@@ -96,7 +96,7 @@ def addDebt(request):
     return redirect('/')
 
 @login_required
-@csrf_exempt # FLAW 4: Disabling CSRF protection for this view.
+@csrf_exempt # FLAW 4: Disabling CSRF protection for this function.
 # This exposes the application to CSRF attacks.
 def deleteDebt(request, debt_id):
     """
